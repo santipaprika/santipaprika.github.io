@@ -1,20 +1,22 @@
-# Hydejack Starter Kit
+## HCZ Material theme
 
-A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.com/).
+This is a simple personal material theme, best suited for personal authors, programmars, bloggers. 
 
-## Quick Start
-### Running locally
-1. Clone repository (git users), or [download] and unzip.
-2. Open terminal, `cd` into root directory (where `_config.yml` is located)
-3. Run `bundle install` [^1]
-4. Run `bundle exec jekyll serve`
-5. Open <http://localhost:4000/hydejack-starter-kit/>
+### Demo
+* [https://codeasashu.github.io/hcz-jekyll-blog](https://codeasashu.github.io/hcz-jekyll-blog/)
 
-## What's next?
-* Open files and read the comments
-* Read the [docs](https://hydejack.com/docs/)
-* Buy the [PRO version](https://hydejack.com/download/) to get the project and resume layout, newsletter subscription box, custom forms, and more.
+#### Feature
 
-[^1]: Requires Bundler. Install with `gem install bundler`.
+* Sitemap and XML Feed
+* Site Search 
+* Projects and tags
+* Paginations in homepage
+* Posts under category
+* Related Posts
+* Highlight pre
+* Next & Previous Post
+* Disqus comment
 
-[download]: https://github.com/hydecorp/hydejack-starter-kit/archive/master.zip
+#### Screenshot
+
+![Screenshot Home Page](https://raw.githubusercontent.com/ashutosh2k12/jekyllthemes/master/thumbnails/hcz-material.png  "Screenshot Home Page")
