@@ -5,46 +5,9 @@
     <description>My Personal Webpage</description>
     <link>/</link>
     <atom:link href="/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Jun 2021 22:48:10 +0200</pubDate>
-    <lastBuildDate>Tue, 22 Jun 2021 22:48:10 +0200</lastBuildDate>
+    <pubDate>Sat, 19 Jun 2021 00:04:15 +0200</pubDate>
+    <lastBuildDate>Sat, 19 Jun 2021 00:04:15 +0200</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
-    
-      <item>
-        <title>Webpage Opening</title>
-        <description>&lt;p&gt;Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.&lt;/p&gt;
-
-&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Home:&lt;/strong&gt; blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;About:&lt;/strong&gt; Plain page with academic and not so academic information about myself.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Projects:&lt;/strong&gt; Page listing some of my recent personal and academic projects.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Resume:&lt;/strong&gt; Page showing my current CV (formation, experience, skills…).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;XML Feed:&lt;/strong&gt; XML feed page.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/test-page-image-1.jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/test-page-image-1.jpg&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
-
-&lt;p&gt;Ofcourse, you can load images from web as well. Just point to image direct URL. For ex, here is one placeholder image:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://lorempixel.com/400/200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/400/200&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
-
-&lt;p&gt;One cool thing about this is the fact that images adapt themselves to the screen size of device. Try to resize your browser window and check for yourself, Have fun.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 22 Jun 2021 14:30:00 +0200</pubDate>
-        <link>/others/2021/06/22/test-page.html</link>
-        <guid isPermaLink="true">/others/2021/06/22/test-page.html</guid>
-        
-        
-        <category>others</category>
-        
-      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -195,128 +158,37 @@ end tell
         
       </item>
     
-    
       <item>
-        <title>Scalable Renderer</title>
-        <description>Scalable Renderer</description>
-        <link>#</link>
-        <pubDate>Tue, 01 Jun 2021 00:00:00 +0200</pubDate>
+        <title>Test Page</title>
+        <description>&lt;p&gt;This is a test blog page where we can explore how to embedd images in the blog.&lt;/p&gt;
+
+&lt;h2 id=&quot;image-example-1&quot;&gt;Image example 1&lt;/h2&gt;
+
+&lt;p&gt;Here, I will embedd image from local assets which goes into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets&lt;/code&gt; directory in project’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; directory. Choose a specific image, related to particular post. I chose to name the image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test-page-image-1.jpg&lt;/code&gt;, which I will embedd as:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/test-page-image-1.jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/test-page-image-1.jpg&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
+
+&lt;p&gt;Ofcourse, you can load images from web as well. Just point to image direct URL. For ex, here is one placeholder image:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://lorempixel.com/400/200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/400/200&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
+
+&lt;p&gt;One cool thing about this is the fact that images adapt themselves to the screen size of device. Try to resize your browser window and check for yourself, Have fun.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Jun 2015 15:50:39 +0200</pubDate>
+        <link>/others/2015/06/04/test-page.html</link>
+        <guid isPermaLink="true">/others/2015/06/04/test-page.html</guid>
         
-        <category>C++</category>
         
-        <category>Graphics</category>
-        
-        <category>Rendering</category>
-        
-        <category>Modeling</category>
+        <category>others</category>
         
       </item>
     
-      <item>
-        <title>GPU-Based Visibility Empirical Study</title>
-        <description>GPU-Based Visibility Empirical Study</description>
-        <link>#</link>
-        <pubDate>Tue, 01 Jun 2021 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>Graphics</category>
-        
-        <category>Rendering</category>
-        
-        <category>Analysis</category>
-        
-      </item>
-    
-      <item>
-        <title>Procedural Building Generator</title>
-        <description>Procedural Building Generator</description>
-        <link>#</link>
-        <pubDate>Tue, 01 Jun 2021 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>Graphics</category>
-        
-        <category>Modeling</category>
-        
-      </item>
-    
-      <item>
-        <title>Marching Cubes Implementation</title>
-        <description>Marching Cubes Implementation</description>
-        <link>#</link>
-        <pubDate>Sat, 01 May 2021 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>Qt</category>
-        
-        <category>Graphics</category>
-        
-        <category>Modeling</category>
-        
-      </item>
-    
-      <item>
-        <title>Catmull-Clark Subdivision Implementation</title>
-        <description>Catmull-Clark Subdivision Implementation</description>
-        <link>#</link>
-        <pubDate>Thu, 01 Apr 2021 00:00:00 +0200</pubDate>
-        
-        <category>Python</category>
-        
-        <category>Blender</category>
-        
-        <category>Graphics</category>
-        
-        <category>Modeling</category>
-        
-      </item>
-    
-      <item>
-        <title>Real-time Realistic Renderer</title>
-        <description>Real-time Realistic Renderer</description>
-        <link>#</link>
-        <pubDate>Mon, 01 Jun 2020 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>OpenGL</category>
-        
-        <category>Graphics</category>
-        
-        <category>Renderer</category>
-        
-      </item>
-    
-      <item>
-        <title>Session Time (WoW addon)</title>
-        <description>Session Time (WoW addon)</description>
-        <link>#</link>
-        <pubDate>Mon, 01 Nov 2021 00:00:00 +0100</pubDate>
-        
-        <category>Addon</category>
-        
-        <category>Lua</category>
-        
-      </item>
-    
-      <item>
-        <title>Physically Based Renderer</title>
-        <description>Physically Based Renderer</description>
-        <link>#</link>
-        <pubDate>Sun, 01 Dec 2019 00:00:00 +0100</pubDate>
-        
-        <category>C++</category>
-        
-        <category>OpenGL</category>
-        
-        <category>Graphics</category>
-        
-        <category>Renderer</category>
-        
-      </item>
     
       <item>
         <title>Simple Shooter</title>
@@ -327,54 +199,6 @@ end tell
         <category>Unreal Engine</category>
         
         <category>C++</category>
-        
-        <category>Game</category>
-        
-      </item>
-    
-      <item>
-        <title>Volumetric Renderer</title>
-        <description>Volumetric Renderer</description>
-        <link>#</link>
-        <pubDate>Fri, 01 Nov 2019 00:00:00 +0100</pubDate>
-        
-        <category>C++</category>
-        
-        <category>OpenGL</category>
-        
-        <category>Graphics</category>
-        
-        <category>Renderer</category>
-        
-      </item>
-    
-      <item>
-        <title>CPU Ray Tracer</title>
-        <description>CPU Ray Tracer</description>
-        <link>#</link>
-        <pubDate>Sat, 01 Jun 2019 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>OpenGL</category>
-        
-        <category>Graphics</category>
-        
-        <category>Renderer</category>
-        
-      </item>
-    
-      <item>
-        <title>Escape Room</title>
-        <description>Escape Room</description>
-        <link>#</link>
-        <pubDate>Sun, 01 Nov 2020 00:00:00 +0100</pubDate>
-        
-        <category>Unity</category>
-        
-        <category>C#</category>
-        
-        <category>VR</category>
         
         <category>Game</category>
         
@@ -394,22 +218,6 @@ end tell
         
         <category>Vuforia</category>
         
-        <category>Game</category>
-        
-      </item>
-    
-      <item>
-        <title>Pick &amp; Run</title>
-        <description>Pick &amp; Run</description>
-        <link>#</link>
-        <pubDate>Sat, 01 Jun 2019 00:00:00 +0200</pubDate>
-        
-        <category>C++</category>
-        
-        <category>OpenGL</category>
-        
-        <category>Game</category>
-        
       </item>
     
       <item>
@@ -419,8 +227,6 @@ end tell
         <pubDate>Mon, 01 Apr 2019 00:00:00 +0200</pubDate>
         
         <category>C++</category>
-        
-        <category>OpenGL</category>
         
         <category>Game</category>
         
