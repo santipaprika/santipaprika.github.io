@@ -1,7 +1,7 @@
 /** ////////////////////////////////// Project Block ////////////////////////////////// */
 .project-item.not-show { display: none; }
 
-.project-outer { vertical-align: top; }
+.project-outer { vertical-align: top; height: 380px; }
 
 .project-outer .project-headlines { margin: 5px 0; border-bottom: 1px #EEE solid; font-size: 20px; }
 

@@ -5,9 +5,46 @@
     <description>My Personal Webpage</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Jun 2021 00:04:15 +0200</pubDate>
-    <lastBuildDate>Sat, 19 Jun 2021 00:04:15 +0200</lastBuildDate>
+    <pubDate>Tue, 22 Jun 2021 22:57:28 +0200</pubDate>
+    <lastBuildDate>Tue, 22 Jun 2021 22:57:28 +0200</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Webpage Opening</title>
+        <description>&lt;p&gt;Hello everyone!
+This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.&lt;/p&gt;
+
+&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Home:&lt;/strong&gt; blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;About:&lt;/strong&gt; Plain page with academic and not so academic information about myself.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Projects:&lt;/strong&gt; Page listing some of my recent personal and academic projects.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resume:&lt;/strong&gt; Page showing my current CV (formation, experience, skills…).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;XML Feed:&lt;/strong&gt; XML feed page.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/test-page-image-1.jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/test-page-image-1.jpg&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
+
+&lt;p&gt;Ofcourse, you can load images from web as well. Just point to image direct URL. For ex, here is one placeholder image:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://lorempixel.com/400/200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/400/200&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
+
+&lt;p&gt;One cool thing about this is the fact that images adapt themselves to the screen size of device. Try to resize your browser window and check for yourself, Have fun.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 22 Jun 2021 14:30:00 +0200</pubDate>
+        <link>/others/2021/06/22/test-page.html</link>
+        <guid isPermaLink="true">/others/2021/06/22/test-page.html</guid>
+        
+        
+        <category>others</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -152,37 +189,6 @@ end tell
         <pubDate>Sat, 04 Jun 2016 00:00:00 +0200</pubDate>
         <link>/others/2016/06/04/example-content.html</link>
         <guid isPermaLink="true">/others/2016/06/04/example-content.html</guid>
-        
-        
-        <category>others</category>
-        
-      </item>
-    
-      <item>
-        <title>Test Page</title>
-        <description>&lt;p&gt;This is a test blog page where we can explore how to embedd images in the blog.&lt;/p&gt;
-
-&lt;h2 id=&quot;image-example-1&quot;&gt;Image example 1&lt;/h2&gt;
-
-&lt;p&gt;Here, I will embedd image from local assets which goes into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets&lt;/code&gt; directory in project’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; directory. Choose a specific image, related to particular post. I chose to name the image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test-page-image-1.jpg&lt;/code&gt;, which I will embedd as:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/test-page-image-1.jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/test-page-image-1.jpg&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
-
-&lt;p&gt;Ofcourse, you can load images from web as well. Just point to image direct URL. For ex, here is one placeholder image:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://lorempixel.com/400/200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/400/200&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
-
-&lt;p&gt;One cool thing about this is the fact that images adapt themselves to the screen size of device. Try to resize your browser window and check for yourself, Have fun.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 04 Jun 2015 15:50:39 +0200</pubDate>
-        <link>/others/2015/06/04/test-page.html</link>
-        <guid isPermaLink="true">/others/2015/06/04/test-page.html</guid>
         
         
         <category>others</category>
