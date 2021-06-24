@@ -5,8 +5,8 @@
     <description>My Personal Webpage</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 Jun 2021 09:17:15 +0200</pubDate>
-    <lastBuildDate>Wed, 23 Jun 2021 09:17:15 +0200</lastBuildDate>
+    <pubDate>Thu, 24 Jun 2021 12:34:39 +0200</pubDate>
+    <lastBuildDate>Thu, 24 Jun 2021 12:34:39 +0200</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -23,23 +23,23 @@ This is an inaguration post for my new webpage, so I am going to discuss how it 
   &lt;li&gt;&lt;strong&gt;XML Feed:&lt;/strong&gt; XML feed page.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/test-page-image-1.jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;content&quot;&gt;Content&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/test-page-image-1.jpg&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
+&lt;h3 id=&quot;posts&quot;&gt;Posts&lt;/h3&gt;
+&lt;p&gt;Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
+Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.&lt;/p&gt;
 
-&lt;p&gt;Ofcourse, you can load images from web as well. Just point to image direct URL. For ex, here is one placeholder image:&lt;/p&gt;
+&lt;h3 id=&quot;projects&quot;&gt;Projects&lt;/h3&gt;
+&lt;p&gt;Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.&lt;/p&gt;
 
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my alternate text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;http://lorempixel.com/400/200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/400/200&quot; alt=&quot;my alternate text&quot; /&gt;;&lt;/p&gt;
-
-&lt;p&gt;One cool thing about this is the fact that images adapt themselves to the screen size of device. Try to resize your browser window and check for yourself, Have fun.&lt;/p&gt;
+&lt;p&gt;That would be all for this brief introduction.
+Thank you for your attention, and take care!&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Jun 2021 14:30:00 +0200</pubDate>
-        <link>/others/2021/06/22/test-page.html</link>
-        <guid isPermaLink="true">/others/2021/06/22/test-page.html</guid>
+        <link>/others/2021/06/22/webpage-opening/</link>
+        <guid isPermaLink="true">/others/2021/06/22/webpage-opening/</guid>
         
         
         <category>others</category>
@@ -64,8 +64,8 @@ This is an inaguration post for my new webpage, so I am going to discuss how it 
 
 </description>
         <pubDate>Sat, 04 Jun 2016 15:50:39 +0200</pubDate>
-        <link>/jekyll/2016/06/04/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">/jekyll/2016/06/04/welcome-to-jekyll.html</guid>
+        <link>/jekyll/2016/06/04/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">/jekyll/2016/06/04/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
@@ -187,8 +187,8 @@ end tell
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Image of the day downloaded.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Sat, 04 Jun 2016 00:00:00 +0200</pubDate>
-        <link>/others/2016/06/04/example-content.html</link>
-        <guid isPermaLink="true">/others/2016/06/04/example-content.html</guid>
+        <link>/others/2016/06/04/example-content/</link>
+        <guid isPermaLink="true">/others/2016/06/04/example-content/</guid>
         
         
         <category>others</category>
