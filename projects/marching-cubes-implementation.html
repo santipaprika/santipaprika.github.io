@@ -215,12 +215,16 @@
           <div class="post-content well">
     <article class="content">
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
             <div class="tag-holder">
              
@@ -233,63 +237,89 @@
                     
                     <span class="label" data-tag="modeling">Modeling</span>
                     
-                <br/><br/>
+                <span style="display: flex; inline-block">
+                <a href="https://github.com/santipaprika/marching-cubes" target="_blank" class="btn btn-xs btn-default btn-raised">
+                    <img src="/static/img/github_button.png" width="70px"/>
+                </a>
+            </span>
             
             </div>
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="marching-cubes">Marching cubes</h1>
+<p><em>Academic SOLO project</em>
+<br /></p>
 
-<h2 id="structure">Structure</h2>
-<ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
-</ul>
+<h2 id="description">Description</h2>
+<p>Implementation of the <a href="http://fab.cba.mit.edu/classes/S62.12/docs/Lorensen_marching_cubes.pdf"><em>Marching cubes</em></a> algorithm (built on Qt) able to create a triangular mesh from volumetric data and a given surface isovalue.<br />
+Lab project for the advanced 3D modeling course in <a href="https://masters.fib.upc.edu/masters/miri-computer-graphics-and-virtual-reality">MIRI</a>, at UPC.</p>
 
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
+<h2 id="animation-demo">Animation demo</h2>
+<div style="width:50%;height:0;padding-bottom:50%;position:relative;"><iframe src="https://giphy.com/embed/V2jr8A6dUnMLumOrhh" width="100%" height="100%" style="position:absolute" frameborder="0" title="Marching Cubes Demo" class="giphy-embed" allowfullscreen=""></iframe></div>
 
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
+<h2 id="application-use">Application use</h2>
+<h3 id="compute-isosurface">Compute isosurface</h3>
+<p>Isosurface computation can be achieved by right-clicking inside the program window and selecting <em>Compute Volume Isosurface</em>. Then, the explorer will open so that an actual volume file can be chosen.</p>
 
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
+<h3 id="volume-file-format">Volume file format</h3>
+<p>The required volume format is a text file (<em>.txt</em>) consisting of <em>N<sup>3</sup> + 1</em> lines, each line containing a number, so that the first line contains <em>N</em> (the size of the voxelization, which is the same in all three dimensions), and the following lines contain the values of the scalar field sorted so that the value for voxel (<em>i</em>; <em>j</em>; <em>k</em>) is at line <em>iN<sup>2</sup> + jN + k + 1</em> (lines numbered starting at zero, which is the line containing <em>N</em>).</p>
 
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
+<p>Sample volume files can be found in the <a href="Data/"><em>Data</em></a> folder.</p>
+
+<h3 id="isovalue">Isovalue</h3>
+<p>The attached marching cubes implementation will set the isovalue to the minimum value in the volume by default.<br />
+This can be changed by passing the desired isovalue as input argument, for instance:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./MeshViewer -2
+</code></pre></div></div>
+
+<h3 id="rendering-animation">Rendering animation</h3>
+<p>When the <em>Animate</em> button is pressed, the program will increase the isovalue progressivelly, storing each output as separate images which can be found in the <a href="MeshViewer_73156e6/img"><em>img</em></a> folder. Afterwards, a video can be built using any external software. In case of <em>ffmpeg</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg -framerate 24 -i %d.png -pix_fmt yuv420p ../out.mp4
+</code></pre></div></div>
 </div>
     <hr />
     <div class="share-page">

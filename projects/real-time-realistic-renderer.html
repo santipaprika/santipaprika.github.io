@@ -215,16 +215,22 @@
           <div class="post-content well">
     <article class="content">
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
             <div class="tag-holder">
              
@@ -237,59 +243,150 @@
                     
                     <span class="label" data-tag="renderer">Renderer</span>
                     
-                <br/><br/>
+                <span style="display: flex; inline-block">
+                <a href="https://github.com/santipaprika/GTR_Framework" target="_blank" class="btn btn-xs btn-default btn-raised">
+                    <img src="/static/img/github_button.png" width="70px"/>
+                </a>
+            </span>
             
             </div>
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="real-time-realistic-renderer">Real-time Realistic Renderer</h1>
+<p><em>Academic 2-PERSON-TEAM project (w/ <a href="https://github.com/victorubieto">Victor Ubieto</a>)</em><br />
+<br /></p>
 
-<h2 id="structure">Structure</h2>
+<h2 id="description">Description</h2>
+<p>Real-time realistic renderer built on C++ and OpenGL (demo video below). It has been developed as the final project for the <em>UPF</em> course <em>Real-Time Graphics</em>, held by <a href="https://github.com/jagenjo">Javi Agenjo</a>.</p>
+
+<h2 id="demo-video">Demo video</h2>
+<div style="width:100%;height:0;padding-bottom:54%;position:relative;"><iframe width="100%" height="100%" style="position:absolute" src="https://www.youtube.com/embed/SdBhR91hi8U" title="Real-time Graphics Renderer Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><br /></p>
+
+<h2 id="features">Features</h2>
+<p>The following features have been implemented (most of them can be tuned through the visual debugging interface):</p>
+
+<p><strong>Rendering Pipelines</strong></p>
 <ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
+  <li>Forward</li>
+  <li>Deferred</li>
 </ul>
 
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
+<p><strong>Deferred illumination optimization</strong></p>
+<ul>
+  <li>Compute light only on projected points contained inside the light area of effect.</li>
+</ul>
 
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
+<p><strong>Dynamic lights</strong></p>
+<ul>
+  <li>For Point, Spot and Directional lights.</li>
+  <li>Color, Intensity, etc.</li>
+</ul>
 
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
+<p><strong>Dynamic Shadows</strong></p>
+<ul>
+  <li>Real-Time shadowmaps.</li>
+  <li>Working for Spot and Directional lights, and partially working for Point Lights.</li>
+</ul>
 
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
+<p><strong>Light Dependant Materials</strong></p>
+<ul>
+  <li>Phong</li>
+  <li>PBR</li>
+</ul>
+
+<p><strong>Screen Space Ambient Occlusion</strong></p>
+<ul>
+  <li>SSAO texture</li>
+  <li>Blur SSAO texture</li>
+  <li>Blur parameters (ImGUI): Kernel size (0 = no blur), number of blurs to apply.</li>
+  <li>Other parameters (ImGUI):  Use hemisphere aligned to normal (SSAO+), number of points generated in the sphere, radius of the sphere.</li>
+</ul>
+
+<p><strong>Irradiance:</strong></p>
+<ul>
+  <li>Irradiance weight (ImGUI parameter).</li>
+  <li>Irradiance probes (visible via ImGUI).</li>
+  <li>Coefficient texture (visible via ImGUI).</li>
+  <li>Irradiance ignored at points outside the probes grid.</li>
+  <li>Irradiance recomputation “in-game” (ImGUI button).</li>
+  <li>Probe normal distance (ImGUI parameter): distance to add in the normal direction before choosing the closest probe (each unit will choose the next probe).</li>
+  <li>Probe interpolation (toggled via ImGUI).</li>
+  <li>Write / Read probes coefficients from disk: If there is an existing “irradiance.bin” file in the root project directory, the spherical coefficients for each probe will be loaded from it (on start). Otherwise, a new “irradiance.bin” file will be created at the same root directory. When the “regenerate irradiance” button is pressed, a new coefficients file is generated overwriting the previous one, so it is recommended to delete the “irradiance.bin” file if it has been recomputed in-game with a modified scene.</li>
+</ul>
+
+<p><strong>Volumetric light</strong></p>
+<ul>
+  <li>Working for directional and spotlights.</li>
+  <li>Jittering: non-uniform start of rays using noise (to avoid banding) by reading to a 2D texture.</li>
+  <li>Undersampling: we store the light shafts in a lower texture.</li>
+  <li>Apply blur to the volumetric texture.</li>
+  <li>Parameters (ImGUI): quality (number of steps of the raymarching algorithm), air density (contribution in alpha at each step), and distance of field (how far the sample of the ray takes to goes completely opaque).</li>
+</ul>
+
+<p><strong>Tone Mapper</strong></p>
+<ul>
+  <li>Param (ImGUI): gamma value, luminance intensity, tone mapper scale, and the average luminance of the frame.</li>
+</ul>
+
+<p><strong>Decals</strong></p>
+<ul>
+  <li>Both the color and material textures of the decal being used can be found in the textures folder.</li>
+  <li>Material texture: [occlusion, roughness, metalness].</li>
+</ul>
+
+<p><strong>Reflection</strong></p>
+<ul>
+  <li>Reflection probes (ImGUI parameter)</li>
+  <li>Probe normal distance (ImGUI parameter): distance to add in the normal direction before choosing the closest probe.</li>
+</ul>
+
+<p>Any material physical behavior (roughness and metalness) can be modified via ImGUI inside each specific node.</p>
+
+<h2 id="software-engine">Software Engine</h2>
+<p>This program has been developed using the framework provided by Javi Agenjo (in C++, and using shaders via OpenGL) and with his assistance.</p>
+
+<h2 id="contributions">Contributions</h2>
+<p><strong>Software Developers</strong>: Santi Paprika, <a href="https://github.com/victorubieto">Víctor Ubieto</a> <br />
+<strong>Framework developer</strong>: <a href="https://github.com/jagenjo">Javi Agenjo</a> (UPF teacher) <br />
+<strong>Assistance</strong>: <a href="https://github.com/jagenjo">Javi Agenjo</a> (UPF teacher) <br />
+<strong>Maps</strong>: <a href="https://sketchfab.com/kryik1023">Renafox - Sketchfab</a></p>
 </div>
     <hr />
     <div class="share-page">

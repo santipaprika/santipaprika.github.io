@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href=/static/img/SELF.png />
-        <title>Procedural Building Generation - Santi Gonzalez</title>
+        <title>Procedural Building Generator - Santi Gonzalez</title>
         <meta name="author" content="Santi Gonzalez" />
-        <meta name="description" content="Procedural Building Generation" />
-        <meta name="keywords" content="Procedural Building Generation, Santi Gonzalez, " />
+        <meta name="description" content="Procedural Building Generator" />
+        <meta name="keywords" content="Procedural Building Generator, Santi Gonzalez, " />
 
         <meta content="" property="fb:app_id">
         <meta content="Santi Gonzalez" property="og:site_name">
         
-          <meta content="Procedural Building Generation" property="og:title">
+          <meta content="Procedural Building Generator" property="og:title">
         
         
           <meta content="article" property="og:type">
@@ -43,7 +43,7 @@
         <meta name="twitter:site" content="@">
         <meta name="twitter:creator" content="@">
         
-          <meta name="twitter:title" content="Procedural Building Generation">
+          <meta name="twitter:title" content="Procedural Building Generator">
         
         
           <meta name="twitter:url" content="/projects/procedural-building-generator">
@@ -117,7 +117,7 @@
           </div>
           <div class="col-md-9 col-sm-8 col-xs-12">
           <div class="row">
-            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Procedural Building Generation</h2>
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Procedural Building Generator</h2>
             
             <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
               <input class="form-control" type="text" id="js-search__input" placeholder="Search">
@@ -215,66 +215,101 @@
           <div class="post-content well">
     <article class="content">
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
+        
+            <div class="tag-holder">
+             
+                
+                    <span class="label" data-tag="c++">C++</span>
+                    
+                    <span class="label" data-tag="graphics">Graphics</span>
+                    
+                    <span class="label" data-tag="modeling">Modeling</span>
+                    
+                <span style="display: flex; inline-block">
+                <a href="https://github.com/santipaprika/procedural-buildings" target="_blank" class="btn btn-xs btn-default btn-raised">
+                    <img src="/static/img/github_button.png" width="70px"/>
+                </a>
+            </span>
+            
+            </div>
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
+        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="procedural-building-generator">Procedural Building Generator</h1>
+<p><em>Academic 2-PERSON-TEAM project (w/ <a href="https://github.com/guillempd">Guillem Pérez</a>)</em><br />
+<br /></p>
 
-<h2 id="structure">Structure</h2>
+<h2 id="description">Description</h2>
+<p>Procedural generator based on <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.112.183&amp;rep=rep1&amp;type=pdf">shape grammar</a> built in C++.</p>
+
+<p>Lab project for the advanced 3D modeling course in <a href="https://masters.fib.upc.edu/masters/miri-computer-graphics-and-virtual-reality">MIRI</a>, at UPC.</p>
+
+<h2 id="demo">Demo</h2>
+<p>TODO</p>
+
+<h2 id="features">Features</h2>
 <ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
+  <li>Instancing of primitive shapes.</li>
+  <li>Rules composition: a rule can contain non terminal shapes which can be defined later.</li>
+  <li>Spatial transformation of the scope.</li>
+  <li>The current state of the scope can be saved (push) and restored (pop).</li>
+  <li>Any parameter of the operations that transform a scope can be randomized inside a given range.</li>
+  <li>Rules can contain more than one execution path, each one with user-defined probabilities.</li>
+  <li>Subdivision of the space represented by the current scope into several parts along one of its axis.</li>
 </ul>
 
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
-
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
-
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
-
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
+<p>More information and examples available in the project’s <a href="https://github.com/santipaprika/procedural-buildings">Github repository</a>.</p>
 </div>
     <hr />
     <div class="share-page">
@@ -334,8 +369,8 @@ Thank you for your attention, and take care!</p>
         /* <![CDATA[ */
 
         var disqus_shortname = "aboutsanti";
-        var disqus_identifier = "_Procedural Building Generation";
-        var disqus_title = "Procedural Building Generation";
+        var disqus_identifier = "_Procedural Building Generator";
+        var disqus_title = "Procedural Building Generator";
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
