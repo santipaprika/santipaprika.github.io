@@ -215,7 +215,6 @@
           <div class="post-content well">
     <article class="content">
     
-        <!-- apply this only if it is a project -->
         
             <div class="tag-holder">
              
@@ -229,7 +228,7 @@
                     <span class="label" data-tag="modeling">Modeling</span>
                     
                 <span style="display: flex; inline-block">
-                <a href="" target="_blank" class="btn btn-xs btn-default btn-raised">
+                <a href="https://github.com/santipaprika/scalable-renderer" target="_blank" class="btn btn-xs btn-default btn-raised">
                     <img src="/static/img/github_button.png" width="70px"/>
                 </a>
             </span>
@@ -237,81 +236,189 @@
             </div>
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="scalable-renderer">Scalable Renderer</h1>
+<p><em>Academic SOLO project</em><br />
+<br /></p>
 
-<h2 id="structure">Structure</h2>
+<h2 id="description">Description</h2>
+<p>Real-time renderer built in C++ with scalability features and optimization algorithms for graphics and game engines. It involves <em>LOD</em> generation, time-critical rendering, and visibility preprocessing, among others.</p>
+
+<p>Final project for the <em>UPC</em> course <em>Scalable Rendering for Graphics and Game Engines</em>.</p>
+
+<h2 id="demo">Demo</h2>
+
+<h2 id="implemented-features">Implemented features</h2>
+
 <ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
+  <li>
+    <p><strong>Compute and display framerate:</strong> Framerate computed using the time
+elapsed during the previous <em>F</em> frames. This amount is displayed, as
+well as the framerate provided by <em>ImGui</em>.</p>
+  </li>
+  <li>
+    <p><strong>Draw multiple copies of the same object:</strong> Done, even though it is
+not useful in the current state of the application. In any case,
+this functionality can be <strong>triggered via numerical keys</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Complex museum:</strong> Tile-based museum generated via external
+application (<a href="https://www.mapeditor.org/">Tiled</a>). A tile file
+parser has been implemented, allowing user-friendly manipulation
+directly on the <em>Tiled</em> editor. The current museum has 11 rooms
+filled with different content (see Figure 1).</p>
+
+    <figure>
+<img src="https://i.ibb.co/ZBZnJVk/Screenshot-from-2021-06-15-19-41-37.png" alt="Tilemap" />
+<figcaption aria-hidden="true">Figure 1: Tilemap editor with the current attached museum. Each color represents a different model (see Github page).</figcaption>
+</figure>
+    <p><br /></p>
+  </li>
+  <li>
+    <p><strong>Museum visualization:</strong> Floor and statue tiles are first filled
+with a flattened cube to visualize a floor, and a statue is added
+then if needed. When a floor and a non-floor tile threshold is
+found, a flattened vertical cube is added in the right tile face to
+symbolize a wall.</p>
+  </li>
+  <li>
+    <p><strong>Movement</strong>: FPS-like movement, with <em>ASWD</em> effect being with
+respect to the camera, and <em>E</em> (up) <em>Q</em> (down) with respect to
+global coordinates.</p>
+  </li>
+  <li>
+    <p><strong>Mesh loading</strong>: To perform this operation, a static (C++ static
+key) dictionary structure has been used. When an entity asks for a
+mesh to be its representative, then it reads it from disk, but
+instead of discarding it afterwards, it saves it on memory so that
+all entities using the same mesh can simply have a pointer attribute
+pointing to the region where it is contained, without having to read
+it again.</p>
+  </li>
+  <li>
+    <p><strong>Compute simplified versions of the loaded model using an octree:</strong>
+The octree is built by evaluating each vertex of the model
+individually, generating new levels until reaching the maximum
+desired one.<br />
+The level of detail (<em>LOD</em>) meshes are then reconstructed by
+connecting the representative of the octree nodes (using the
+average) at the selected level if there are vertices being
+represented connected in the detailed version.<br />
+<strong><em>LOD</em>s are generated and stored to disk, unless the targeted <em>LOD</em>
+already exists, then it is loaded without computing the octree.</strong><br />
+Given the current implementation of the octree class, it is not
+possible to simplify very complex meshes. For example, <em>lucy.ply</em>
+cannot be simplified with <em>QEM</em> using  ≥ 9 as maximum depth without
+running into memory issues (for 16 GB RAM systems, which is my
+case). Hence, the scene proposes a set of models with <em>LOD</em> levels
+6,7,8, and 9 but without including <em>lucy.ply</em>.<br />
+The octree implementation could be optimized and also separated in
+different types of octrees in terms of the desired representation
+and clustering techniques to use.</p>
+
+    <ul>
+      <li><strong>Compute vertex representative using QEM:</strong> The total fundamental
+error quadric is computed on the fly as new vertices are evaluated.
+Afterwards, this is used to obtain the point that minimizes the
+error metric as the node’s representative.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Preservation of thin features:</strong> In the vertex evaluation phase,
+instead of adding to a single cumulative value or quadric, use 8
+different clusters. Each of this clusters define a set of directions
+within an octant. Each vertex will be classified to the cluster that
+contains its normal.<br />
+If close enough to the entity, some flipped and distorted triangles
+can be observed, which is a drawback of the method, but also there
+could be some bug in the implementation enhancing this effect.</p>
+  </li>
+  <li>
+    <p><strong>Representative and clustering techniques can be combined:</strong>
+Average representative with voxel clustering (simple approach), QEM
+representative with voxel clustering, average representative with
+normal-based voxel clustering, and QEM representative with
+normal-based voxel clustering.</p>
+  </li>
+  <li>
+    <p><strong>Time-critical rendering:</strong> Since the triangles per second (<em>TPS</em>)
+is a GPU-dependant metric, a UI slider is used to let the user chose
+an appropriate value. Even though it could be optimized, the current
+implementation recomputes the whole value queue from scratch at
+every frame (some constant measures are stored in the mesh structure
+to avoid repetitive computations).</p>
+  </li>
+  <li>
+    <p><strong>Hysteresis transition:</strong> A <em>blocked</em> flag is assigned to each
+entity. When an entity transitions to a different <em>LOD</em> (because of
+the time-critical algorithm), it is set as <em>blocked</em> and we store
+the distance from the object to the camera. This entity will not be
+allowed to change its <em>LOD</em> until the camera has gone closer or
+further than a given distance. In the current implementation, this
+threshold has been implemented in two different ways (both can be
+tuned by the user):</p>
+
+    <ol>
+      <li>
+        <p><strong>Relative distance</strong>: the threshold is proportional to the
+distance from the entity to the camera at the moment of
+blocking.</p>
+      </li>
+      <li>
+        <p><strong>Absolute distance</strong>: the threshold is fixed.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Precompute cell-to-cell visibility:</strong> The precomputation is done
+in grid space using ray casting for each cell in random directions.</p>
+  </li>
+  <li>
+    <p><strong>Visibility precomputation optimization:</strong></p>
+
+    <ol>
+      <li><strong>Random offset for cell center sampling:</strong> A technique that has
+provided good accuracy with a reduced number of rays is to use
+as cell center a randomized position within the cell bounds.
+Since this point defines where the ray will pass through, this
+allows further cell visibility exploration rather than
+visibility from the fixed cell center.</li>
+    </ol>
+  </li>
 </ul>
-
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
-
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
-
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
-
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
 </div>
     <hr />
     <div class="share-page">
@@ -337,11 +444,6 @@ Thank you for your attention, and take care!</p>
 </article>
 <hr />
 
-
-    
-    
-        
-    
 
     
     

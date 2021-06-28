@@ -215,43 +215,30 @@
           <div class="post-content well">
     <article class="content">
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
             <div class="tag-holder">
              
@@ -267,7 +254,7 @@
                     <span class="label" data-tag="game">Game</span>
                     
                 <span style="display: flex; inline-block">
-                <a href="" target="_blank" class="btn btn-xs btn-default btn-raised">
+                <a href="https://github.com/santipaprika/penguin-pet" target="_blank" class="btn btn-xs btn-default btn-raised">
                     <img src="/static/img/github_button.png" width="70px"/>
                 </a>
             </span>
@@ -275,45 +262,87 @@
             </div>
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="penguin-pet">Penguin Pet</h1>
+<p><em>Academic SOLO project</em></p>
 
-<h2 id="structure">Structure</h2>
+<h2 id="description">Description</h2>
+<p>Unity-based penguin pet simulator in augmented reality (AR). The user’s goal is to avoid reaching an insufficient level of any of the penguin’s needs. There are 3 needs:</p>
 <ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
+  <li>Hunger</li>
+  <li>Hygiene</li>
+  <li>Happiness</li>
 </ul>
 
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
+<p><strong>This is just a fictional game prototype. As most wild animals, penguins should not be pet!</strong></p>
 
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
+<p>Project for the <em>Virtual and Augmented Reality</em> course in <a href="https://masters.fib.upc.edu/masters/miri-computer-graphics-and-virtual-reality">MIRI</a>, at UPC.</p>
 
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
+<h2 id="demo">Demo</h2>
+<div style="width:100%;height:0;padding-bottom:54%;position:relative;"><iframe width="100%" height="100%" style="position:absolute" src="https://www.youtube.com/embed/wlUmhPJWb64" title="Penguin Pet AR Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><br /></p>
 
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
+<h2 id="environment-registration">Environment Registration</h2>
+<p>The registration of the environment is done via markers (stored in a custom Vuforia database). For this application, three diferent markers have been designed:</p>
+
+<p><img src="https://raw.githubusercontent.com/santipaprika/VAR_PenguinPet_ARProject/894d831dda4d6c8655ce94a68194823e1562933e/Markers/penguin_marker.jpeg" alt="Penguin Marker" width="30%" style="display: inline-block" />   
+<img src="https://raw.githubusercontent.com/santipaprika/VAR_PenguinPet_ARProject/894d831dda4d6c8655ce94a68194823e1562933e/Markers/fish_marker.jpeg" alt="Fish Marker" width="30%" style="display: inline-block" />   
+<img src="https://raw.githubusercontent.com/santipaprika/VAR_PenguinPet_ARProject/894d831dda4d6c8655ce94a68194823e1562933e/Markers/seal_marker.jpeg" alt="Seal Marker" width="30%" style="display: inline-block" /></p>
+
+<ul>
+  <li><strong>Penguin marker</strong>: Spawns the penguin pet on it.</li>
+  <li><strong>Fish marker</strong>: Spawns a bunch of fishes. Those use gravity to be physically coherent, therefore rotating
+the marker too much can make the spawned fishes to fall.</li>
+  <li><strong>Seal marker</strong>: Spawns a seal on it.</li>
+</ul>
+
+<p>The world reference system is defined by the device.</p>
+
+<h2 id="available-interactions">Available interactions</h2>
+<p>Before being able to perform any activity, the user must confirm that he/she is ready, so that the penguin levels
+can be initialized. To perform this confirmation, the user has to <strong>tap on the penguin</strong>. Then, status bars will
+appear above it, and will start to decrease over time.<br />
+Once the penguin has been initialized, other activities may and should be performed to avoid loosing the game:</p>
+<ul>
+  <li>
+    <p><strong>Feed the penguin</strong>: To feed the penguin, the user must have the <strong>penguin and fish markers</strong> close enough
+(but not too much), and once <strong>both objects</strong> are <strong>visible</strong>, <strong>grab a fish</strong> and bring it to the penguin’s
+mouth (using <strong>finger pan</strong>).<br />
+Grabbed fishes can be dropped anywhere by ending the touch, and grabbed again using the same procedure stated above.</p>
+  </li>
+  <li>
+    <p><strong>Wash the penguin</strong>: To wash the penguin, there is no need for any marker but the penguin’s one. Once the <strong>penguin is in view</strong>, a sponge blue button will appear on the bottom part of the screen. Once this <strong>button is pressed</strong>, the user can <strong>tap and pan around the penguin</strong>, and a sponge will appear following his/her finger symbolising the washing.<br />
+The hygiene bar will increase at the same rate independently of the penguin’s region being washed.</p>
+  </li>
+  <li>
+    <p><strong>Entertain the penguin</strong>: To make the penguin happy, the user must use both the <strong>penguin and seal markers</strong>. If <strong>both</strong> spawned objects are <strong>in view</strong> and they are <strong>close enough</strong>, the seal will go to the penguin’s position and greet him. While this scenario is active, the penguin gains happiness. To avoid performance errors, it is recommended to move the markers always in a visible region by the camera once the interaction has been triggered.</p>
+  </li>
+</ul>
+
+<p>As a complementary interaction, once the penguin has been initialized the user can tap on the same penguin
+or the seal, and those will trigger an animation and sound (like a greeting).</p>
+
+<h2 id="sources">Sources</h2>
+<h3 id="3d-models-and-animations">3D Models and Animations</h3>
+<p>Penguin: <a href="https://skfb.ly/6DLnG">Mateus Schwaab (Sketchfab)</a><br />
+Seal: <a href="https://skfb.ly/6RzPp">DanielWichterich (Sketchfab)</a><br />
+Fish: <a href="https://skfb.ly/6UXuA">salmonclosebeta (Sketchfab)</a></p>
+
+<h3 id="sounds">Sounds</h3>
+<p>Penguin: <a href="https://freesound.org/people/MATRIXXX_/sounds/459341/">MATRIXXX_ (Freesound)</a><br />
+Seal: <a href="https://freesound.org/people/MATRIXXX_/sounds/459156/">MATRIXXX_ (Freesound)</a><br />
+Eat SFX: <a href="https://freesound.org/people/InspectorJ/sounds/412068/">InspectorJ (Freesound)</a><br />
+Wash SFX: <a href="https://freesound.org/people/DJames619/sounds/389270/">DJames619 (Freesound)</a></p>
+
 </div>
     <hr />
     <div class="share-page">
@@ -339,11 +368,6 @@ Thank you for your attention, and take care!</p>
 </article>
 <hr />
 
-
-    
-    
-        
-    
 
     
     

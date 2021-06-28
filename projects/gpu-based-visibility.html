@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href=/static/img/SELF.png />
-        <title>GPU-Based Visibility Empirical Study - Santi Gonzalez</title>
+        <title>GPU-Based Visibility: Empirical Study - Santi Gonzalez</title>
         <meta name="author" content="Santi Gonzalez" />
-        <meta name="description" content="GPU-Based Visibility Empirical Study" />
-        <meta name="keywords" content="GPU-Based Visibility Empirical Study, Santi Gonzalez, " />
+        <meta name="description" content="GPU-Based Visibility: Empirical Study" />
+        <meta name="keywords" content="GPU-Based Visibility: Empirical Study, Santi Gonzalez, " />
 
         <meta content="" property="fb:app_id">
         <meta content="Santi Gonzalez" property="og:site_name">
         
-          <meta content="GPU-Based Visibility Empirical Study" property="og:title">
+          <meta content="GPU-Based Visibility: Empirical Study" property="og:title">
         
         
           <meta content="article" property="og:type">
@@ -43,7 +43,7 @@
         <meta name="twitter:site" content="@">
         <meta name="twitter:creator" content="@">
         
-          <meta name="twitter:title" content="GPU-Based Visibility Empirical Study">
+          <meta name="twitter:title" content="GPU-Based Visibility: Empirical Study">
         
         
           <meta name="twitter:url" content="/projects/gpu-based-visibility">
@@ -117,7 +117,7 @@
           </div>
           <div class="col-md-9 col-sm-8 col-xs-12">
           <div class="row">
-            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">GPU-Based Visibility Empirical Study</h2>
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">GPU-Based Visibility: Empirical Study</h2>
             
             <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
               <input class="form-control" type="text" id="js-search__input" placeholder="Search">
@@ -215,10 +215,8 @@
           <div class="post-content well">
     <article class="content">
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
             <div class="tag-holder">
              
@@ -234,7 +232,7 @@
                     <span class="label" data-tag="analysis">Analysis</span>
                     
                 <span style="display: flex; inline-block">
-                <a href="" target="_blank" class="btn btn-xs btn-default btn-raised">
+                <a href="https://github.com/santipaprika/GPU-based-visibility" target="_blank" class="btn btn-xs btn-default btn-raised">
                     <img src="/static/img/github_button.png" width="70px"/>
                 </a>
             </span>
@@ -242,78 +240,65 @@
             </div>
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-        <!-- apply this only if it is a project -->
         
     
-    <div class="post"><p>Hello everyone!
-This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.</p>
+    <div class="post"><h1 id="gpu-based-visibility-empirical-study">GPU-based Visibility: Empirical Study</h1>
+<p><em>Academic SOLO project</em>
+<br /></p>
 
-<h2 id="structure">Structure</h2>
+<h2 id="description">Description</h2>
+<p>Implementation and evaluation of GPU-based visibility techniques against traditional ones. Built on C++ and OpenGL.<br />
+<strong>See the details in <a href="/rendering/2021/06/27/GPU-based-visibility-empirical-study/">this post</a>.</strong></p>
+
+<p>Lab project for the <em>Fast Realistic Rendering</em> course in <a href="https://masters.fib.upc.edu/masters/miri-computer-graphics-and-virtual-reality">MIRI</a>, at UPC.</p>
+
+<h2 id="results">Results</h2>
+<p>See the interpretation in the referenced post.
+<img width="95%" src="/static/projects/gpu_based_visibility_preview.png" /></p>
+
+<h2 id="techniques-evaluated">Techniques evaluated</h2>
 <ul>
-  <li><strong>Home:</strong> blog-like landing page, listing the published posts (like this one) sorted by publication date (newest first).</li>
-  <li><strong>About:</strong> Plain page with academic and not so academic information about myself.</li>
-  <li><strong>Projects:</strong> Page listing some of my recent personal and academic projects.</li>
-  <li><strong>Resume:</strong> Page showing my current CV (formation, experience, skills…).</li>
-  <li><strong>XML Feed:</strong> XML feed page.</li>
+  <li>Stop-and-wait using occlusion queries.</li>
+  <li><a href="https://www.cg.tuwien.ac.at/research/publications/2004/Bittner-2004-CHC/Bittner-2004-CHC-Paper.pdf">Coherent hierarchical culling</a> using occlusion queries.</li>
+  <li>CPU-based <a href="http://www.lighthouse3d.com/tutorials/view-frustum-culling/">viewfrustum culling</a> (can be applied on top of both previous approaches).</li>
 </ul>
 
-<h2 id="content">Content</h2>
-<h3 id="posts">Posts</h3>
-<p>Most post will be dev-oriented articles or reports about computer graphics and game development techniques. Still, I do not discard posting stuff about other topics.
-Also, I will use some posts as notice page for every new project I may add, introducing the topic, complexity, etc.</p>
-
-<h3 id="projects">Projects</h3>
-<p>Each project will contain technical information about it, as well as features implemented, complexity, and whether it has been a solo project or a team project.</p>
-
-<p>Notice that in the projects section, all projects are displayed and can be filtered by tags. Also, while hovering over the image of a project in that page, a small animated preview of it will be displayed, which is useful to get a brief idea of it without having to read the technical details (which I don’t think it is feasible if you want know something about all my projects in a short amount of time).</p>
-
-<p>That would be all for this brief introduction.
-Thank you for your attention, and take care!</p>
+<h2 id="features">Features</h2>
+<ul>
+  <li>Real-time navigation</li>
+  <li>GUI to swap between techniques.</li>
+  <li>Record and reproduce camera path.</li>
+</ul>
 </div>
     <hr />
     <div class="share-page">
@@ -350,11 +335,6 @@ Thank you for your attention, and take care!</p>
         
     
 
-    
-    
-        
-    
-
 
 
 <div class="PageNavigation">
@@ -373,8 +353,8 @@ Thank you for your attention, and take care!</p>
         /* <![CDATA[ */
 
         var disqus_shortname = "aboutsanti";
-        var disqus_identifier = "_GPU-Based Visibility Empirical Study";
-        var disqus_title = "GPU-Based Visibility Empirical Study";
+        var disqus_identifier = "_GPU-Based Visibility: Empirical Study";
+        var disqus_title = "GPU-Based Visibility: Empirical Study";
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {

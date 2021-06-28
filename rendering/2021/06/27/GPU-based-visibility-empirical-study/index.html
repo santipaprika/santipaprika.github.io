@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href=/static/img/SELF.png />
+        <title>GPU-based visibility: empirical study - Santi Gonzalez</title>
+        <meta name="author" content="Santi Gonzalez" />
+        <meta name="description" content="GPU-based visibility: empirical study" />
+        <meta name="keywords" content="GPU-based visibility: empirical study, Santi Gonzalez, rendering" />
+
+        <meta content="" property="fb:app_id">
+        <meta content="Santi Gonzalez" property="og:site_name">
+        
+          <meta content="GPU-based visibility: empirical study" property="og:title">
+        
+        
+          <meta content="article" property="og:type">
+        
+        
+          <meta content="My Personal Webpage" property="og:description">
+        
+        
+          <meta content="/rendering/2021/06/27/GPU-based-visibility-empirical-study/" property="og:url">
+        
+        
+          <meta content="2021-06-27T13:50:30+02:00" property="article:published_time">
+          <meta content="/about/" property="article:author">
+        
+        
+          <meta content="/static/img/logo-high-resolution.png" property="og:image">
+        
+        
+          
+          <meta content="rendering" property="article:section">
+          
+        
+        
+          
+        
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@">
+        <meta name="twitter:creator" content="@">
+        
+          <meta name="twitter:title" content="GPU-based visibility: empirical study">
+        
+        
+          <meta name="twitter:url" content="/rendering/2021/06/27/GPU-based-visibility-empirical-study/">
+        
+        
+          <meta name="twitter:description" content="My Personal Webpage">
+        
+        
+
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+      <script type="text/javascript">window.baseurl = '';</script>
+      
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <!-- FontAwesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/74dfc6cf47.css">
+
+        <!-- Core BootStrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- Material Design CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap-material-design.min.css">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/thickbox.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/projects.css">
+
+        <script type="text/javascript">
+          //loadingImage is relative to project dir
+          var tb_pathToImage = "/static/img/loadingAnimation.gif";
+        </script>
+
+  </head>
+
+  <body class="home overflow-hidden">
+    <div class="header-panel shadow-z-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="row-picture">
+              <img id="about" class="logo-img" src="/static/img/SELF.png" height="75px" width="75px">
+            </div>
+            <div class="row-details">
+              <h4 class="list-group-item-heading">Santi Gonzalez</h4>
+              <p class="list-group-item-text">Graphics and game developer</p>
+              <div class="social-icons">
+	
+        <a class="icon" target="_blank" href="https://github.com/santipaprika"><i class="fa fa-github"></i></a>
+    
+        <a class="icon" target="_blank" href="https://twitter.com/santi_paprika"><i class="fa fa-twitter"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.linkedin.com/in/santi-gonzalez-jimenez/"><i class="fa fa-linkedin"></i></a>
+    
+        <a class="icon" target="_blank" href="https://stackoverflow.com/users/14384832/santi-paprika"><i class="fa fa-stack-overflow"></i></a>
+    
+        <a class="icon" target="_blank" href="https://www.youtube.com/channel/UCAh0KmnrDALJrNLhK-2G4Kw"><i class="fa fa-youtube"></i></a>
+    
+</div>
+
+            </div>
+            <div class="navbar-header pull-right">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-2x fa-bars"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+          <div class="row">
+            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">GPU-based visibility: empirical study</h2>
+            
+            <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
+              <input class="form-control" type="text" id="js-search__input" placeholder="Search">
+              <ul class="search__results" id="js-search__results"></ul>
+            </div>
+            
+            </div>
+            <p class="info">
+            
+                
+                    <span class="time">27 Jun 2021</span>
+                
+            
+            
+            <span class="categories">
+                &raquo; 
+                
+                <a href="/category/rendering">rendering</a>
+                
+                
+            </span>
+            
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main outer">
+      <div class="row">
+        <div class="col-md-3 col-xs-12">
+              <nav class="menu">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="list-separator nav navbar-nav well well-primary post">
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 current-menu-item GPU-based-visibility-empirical-study"><a href="/" target="_self"><i class="fa fa-home"></i> Home</a></li>
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  GPU-based-visibility-empirical-study"><a href="/about/" target="_self"><i class="fa fa-comments"></i> About</a></li>
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  GPU-based-visibility-empirical-study"><a href="/projects" target="_self"><i class="fa fa-desktop"></i> Projects</a></li>
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  GPU-based-visibility-empirical-study"><a href="/#" target="_self"><i class="fa fa-graduation-cap"></i> Resume</a></li>
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  GPU-based-visibility-empirical-study"><a href="https://github.com/santipaprika" target="_blank"><i class="fa fa-github"></i> Github</a></li>
+
+	
+	
+	
+	
+	
+	
+    
+	
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  GPU-based-visibility-empirical-study"><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i> XML Feed</a></li>
+
+</ul>
+
+    </div>
+    </nav>
+
+        </div>
+        <div class="col-md-9 col-xs-12 full">
+          <div class="post-content well">
+    <article class="content">
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    <div class="post"><p>In this post I am going to study the performance of some GPU-based visibility techniques against traditional ones.<br />
+<br /></p>
+
+<h2 id="visibility-techniques-covered">Visibility techniques covered</h2>
+<hr />
+<h3 id="cpu-based-viewfrustum-culling-vfc">CPU-based Viewfrustum Culling (VFC)</h3>
+
+<p><a href="http://www.lighthouse3d.com/tutorials/view-frustum-culling/"><em>VFC</em></a> culls all objects that fall completely outside of the camera
+frustum. To compute this efficiently (and conservatively), AABBs are
+used to check whether models are inside or outside the camera frustum.</p>
+
+<h3 id="stop-and-wait-sw-or-sw">Stop and Wait (SW or S&amp;W)</h3>
+
+<p><em>S&amp;W</em> uses occlusion queries to determine if an object is visible in
+screen, and therefore should be rendered. To perform this, we need to
+render in a front-to-back fashion so that front objects already rendered
+will occlude back objects, which will not pass the occlusion query test
+and consecutively will not be rendered.<br />
+It is important to notice that objects are visited sequentially after
+being rendered individually, so that one object will not be queried nor
+rendered until the previous one has been rendered (or discarded) after
+being queried.</p>
+
+<h3 id="coherent-hierarchical-culling-chc">Coherent Hierarchical Culling (CHC)</h3>
+
+<p>Approach based on <a href="https://www.cg.tuwien.ac.at/research/publications/2004/Bittner-2004-CHC/Bittner-2004-CHC-Paper.pdf"><em>Coherent Hierarchical Culling: Hardware Occlusion
+Queries Made Useful</em></a> by <em>Bittner</em> et al.<br />
+<em>CHC</em> is a heuristic that tries to reduce waiting times from the <em>S&amp;W</em>
+approach. To do so, it uses scene hierarchies and temporal information.
+At first, only the first level of hidden nodes from the previous frame
+(of each branch of the scene hierarchy) will be queried. In the current
+implementation, this navigation is performed in a <em>depth-first search</em>
+(<em>DFS</em>) strategy. Visible leaf nodes in the previous frame are queried
+in the current frame and rendered without waiting for the queries
+results. At iteration the algorithm tries to see if there some query
+results available. If the invisible queried nodes turn out to be visible
+in this frame, then they are set visible and traversed (i.e. its child
+nodes will be queried again, and so on). On the other hand, if a leaf
+nodes that was visible in the previous frame turns out to be hidden, we
+will have missed because we will have already rendered it. However, we
+will implicitly pull up the invisibility if parent nodes were not
+visible as well, since at each new frame all nodes are initialized as
+hidden after being visited queried. This will fix our miss for the
+following frame.<br />
+<br /></p>
+
+<h2 id="experiment-set-up">Experiment set-up</h2>
+<hr />
+<p>A camera path has been recorded and reproduced using the following
+configurations:</p>
+
+<ul>
+  <li>
+    <p>No optimization</p>
+  </li>
+  <li>
+    <p>Viewfrustum Culling (<em>VFC</em>)</p>
+  </li>
+  <li>
+    <p>Stop and Wait (<em>S&amp;W</em>)</p>
+  </li>
+  <li>
+    <p>Stop and Wait + Viewfrustum Culling (<em>S&amp;W + VFC</em>)</p>
+  </li>
+  <li>
+    <p>Coherent Hierarchical Culling (<em>CHC</em>)</p>
+  </li>
+  <li>
+    <p>Coherent Hierarchical Culling + Viewfrustum Culling (<em>CHC + VFC</em>)</p>
+  </li>
+</ul>
+
+<p>The model used has been <em>moai.ply</em> in a 24 x 24 grid (key button 6).<br />
+In the current system, this is a significantly saturated configuration in geometry, so real/interactive times are not achieved for some cases, as can be observed in Figure 1. However, this is not relevant, since the goal of this study is to compare the relative costs
+of the different techniques, which are effectively displayed.<br />
+The camera path has been designed so that different scenarios appear
+(see Table 1).<br />
+<br /></p>
+
+<h2 id="results">Results</h2>
+<hr />
+<style>
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        border:2px solid #000000;
+    }
+
+    th{
+        border:2px solid #000000;
+    }
+
+    td{
+        border:1px solid #000000;
+    }
+</style>
+
+<table style="width:95%;">
+<caption>Table 1: Path intervals description and approximate average frame times obtained with no optimization, <em>VFC</em> and <em>CHC</em> (most relevant techniques), with sample images belonging to each interval. Best measures for each scenario are highlighted in green.</caption>
+<colgroup>
+<col />
+<col style="width: 30%" />
+<col style="width: 28%" />
+<col />
+<col />
+<col />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Frame</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Image</th>
+<th style="text-align: center;">No OPT</th>
+<th style="text-align: center;">VFC</th>
+<th style="text-align: center;">CHC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0-350</td>
+<td style="text-align: left;">Camera close to individual models.</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region1.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center;">160 ms</td>
+<td style="text-align: center; background-color: #45f542">40 ms</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">350-550</td>
+<td style="text-align: left;">Camera frustum containing the whole scene at floor level</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region2.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center; background-color: #45f542">55 ms</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">550-800</td>
+<td style="text-align: left;">Camera seeing the whole scene from above</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region3.png" alt="image" /></td>
+<td style="text-align: center; background-color: #45f542">195 ms</td>
+<td style="text-align: center; background-color: #45f542">195 ms</td>
+<td style="text-align: center;">370 ms</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">800-950</td>
+<td style="text-align: left;">Camera navigating below the floor plane</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region4.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center;">120 ms</td>
+<td style="text-align: center; background-color: #45f542">5 ms</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">950-1200</td>
+<td style="text-align: left;">Camera navigating inside the grid at floor level</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region5.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center;">90 ms</td>
+<td style="text-align: center; background-color: #45f542">30 ms</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1200-1600</td>
+<td style="text-align: left;">Camera looking at edges and corners of the grid (low amount of objects)</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region6.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center; background-color: #45f542">45 ms</td>
+<td style="text-align: center;">70 ms</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1600-2000</td>
+<td style="text-align: left;">Camera seeing most of the scene from above</td>
+<td style="text-align: left;"><img src="/static/post-images/gpu-based-visibility/region7.png" alt="image" /></td>
+<td style="text-align: center;">195 ms</td>
+<td style="text-align: center; background-color: #45f542">170 ms</td>
+<td style="text-align: center;">330 ms</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+<figure class="image">
+    <p align="center">
+        <img src="/static/projects/gpu_based_visibility_preview.png" alt="Figure 1: Frame times to compute each frame in the test sequence used, evaluated with the proposed visibility techniques. Dashed lines are used to represent the same techniques as non-dashed ones but with viewfrustum culling (VFC)." width="80%" />
+    </p>
+    <figcaption>Figure 1: Frame times to compute each frame in the test sequence used, evaluated with the proposed visibility techniques. Dashed lines are used to represent the same techniques as non-dashed ones but with viewfrustum culling (VFC).</figcaption>
+</figure>
+<p><br /></p>
+
+<h2 id="discussion">Discussion</h2>
+<hr />
+<p>As can be observed in Table 1 and Figure 1, the use of different visibility techniques can imply a huge change in performance.</p>
+
+<h3 id="viewfrustum-culling-vfc">Viewfrustum Culling (<em>VFC</em>)</h3>
+
+<p>The first important difference to notice is the impact of <em>VFC</em>. Compared to no optimizations, <em>VFC</em> achieves much better performance in
+general, and almost identical performance in the worst cases. Therefore, it is safe to use <em>VFC</em> in this configuration.<br />
+Worst cases correspond to sequence intervals in which all elements of the grid are contained inside the camera frustum, hence <em>VFC</em> is not able to reduce the bottleneck.<br />
+Best cases are associated to frames that contain very few geometry in
+the camera frustum.</p>
+
+<h3 id="stop-and-wait-sw">Stop and Wait (<em>S&amp;W</em>)</h3>
+
+<p>The first occlusion query-based method introduced is <em>S&amp;W</em>. The technique alone performs worse than using no optimization techniques. As
+expected, this is because of the constant stalls in CPU and GPU during the occlusion querying phase.<br />
+With <em>VFC</em>, the technique seems to perform better, but still worse than only using <em>VFC</em>.<br />
+We could conclude that it is not worth using <em>S&amp;W</em> for almost any scenario.</p>
+
+<h3 id="coherent-hierarchical-culling-chc-1">Coherent Hierarchical Culling (<em>CHC</em>)</h3>
+
+<p>Finally, lets analyze the <em>CHC</em> effects on performance. In general, it reduces significantly the frame times with respect to the previous approaches. Looking at Figure 1, we can even see many frames in which the improvement is around one order of magnitude.<br />
+However, it can be observed as well that this technique is not very stable in terms of frame rate. <em>VFC</em> could seem unstable too, but in all cases it has the same or better performance than no optimization times. This is not the case of <em>CHC</em>. There are some frames in which the performance is significantly worse than no optimization at all. This scenario appears in frames with no occlusions (or very few of them), because even if all leaf nodes end up being rendered, they will need to be queried as well. Therefore, since a leaf node is equivalent to a model, all the models will be queried, and the frame rendering phase will not end until all queries have finished.<br />
+Also, notice that <em>VFC</em> has almost no impact when using <em>CHC</em>. This is because the hierarchical structure of the scene is performing this step implicitly. If an inner node (containing a set of models) does not pass the query test, then it is considered as occluded, but it could be also the case that it has not been projected to the screen, i.e. it is outside the camera frustum.<br />
+Therefore, very few queries are avoided if we use <em>VFC</em>, to the point that it there is no significant gain in using it (VFC test as expensive as launching the few queries avoided).<br />
+<br />
+Even though current techniques are more involved, the performance of the algorithms covered give a brief idea of the pros and cons of each one. I learned so much working on this, so I hope it has been useful to you too in some way.<br />
+<br />
+See you in the next one!</p>
+</div>
+    <hr />
+    <div class="share-page">
+    Share this on &rarr;
+ <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google + -->
+<div class="g-plus" data-action="share" data-annotation="bubble"></div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<!-- Facebook -->
+<div class="fb-share-button" data-href="/rendering/2021/06/27/GPU-based-visibility-empirical-study/" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</article>
+<hr />
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+
+<div class="PageNavigation">
+  
+    <a class="prev pull-left" href="/others/2021/06/22/webpage-opening/">&laquo; Webpage opening</a>
+  
+  
+</div>
+
+
+<div class="disqus-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+
+        var disqus_shortname = "aboutsanti";
+        var disqus_identifier = "_GPU-based visibility: empirical study";
+        var disqus_title = "GPU-based visibility: empirical study";
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    /* ]]> */
+    </script>
+</div>
+</div>
+          <div class="row">
+            <div class="col-md-12 col-xs-12 footer">
+              <footer>
+  © 2021 Santi Gonzalez Jimenez - Powered by <a href="https://jekyllrb.com/">Jekyll</a>.
+</footer>
+<div align="center">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-0000000000000000"
+    data-ad-slot="0000000000"
+    data-ad-format="auto"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+            </div>
+          </div>
+        </div> <!-- end /.col-md-9 -->
+      </div> <!-- end /.row -->
+    </div>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="/static/js/super-search.js"></script>
+
+<script src="/static/js/thickbox-compressed.js"></script>
+<script src="/static/js/material.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/projects.js"></script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

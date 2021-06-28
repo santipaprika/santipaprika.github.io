@@ -5,12 +5,238 @@
     <description>My Personal Webpage</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Jun 2021 00:13:09 +0200</pubDate>
-    <lastBuildDate>Mon, 28 Jun 2021 00:13:09 +0200</lastBuildDate>
+    <pubDate>Mon, 28 Jun 2021 23:06:24 +0200</pubDate>
+    <lastBuildDate>Mon, 28 Jun 2021 23:06:24 +0200</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
-        <title>Webpage Opening</title>
+        <title>GPU-based visibility: empirical study</title>
+        <description>&lt;p&gt;In this post I am going to study the performance of some GPU-based visibility techniques against traditional ones.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;visibility-techniques-covered&quot;&gt;Visibility techniques covered&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;h3 id=&quot;cpu-based-viewfrustum-culling-vfc&quot;&gt;CPU-based Viewfrustum Culling (VFC)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.lighthouse3d.com/tutorials/view-frustum-culling/&quot;&gt;&lt;em&gt;VFC&lt;/em&gt;&lt;/a&gt; culls all objects that fall completely outside of the camera
+frustum. To compute this efficiently (and conservatively), AABBs are
+used to check whether models are inside or outside the camera frustum.&lt;/p&gt;
+
+&lt;h3 id=&quot;stop-and-wait-sw-or-sw&quot;&gt;Stop and Wait (SW or S&amp;amp;W)&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;S&amp;amp;W&lt;/em&gt; uses occlusion queries to determine if an object is visible in
+screen, and therefore should be rendered. To perform this, we need to
+render in a front-to-back fashion so that front objects already rendered
+will occlude back objects, which will not pass the occlusion query test
+and consecutively will not be rendered.&lt;br /&gt;
+It is important to notice that objects are visited sequentially after
+being rendered individually, so that one object will not be queried nor
+rendered until the previous one has been rendered (or discarded) after
+being queried.&lt;/p&gt;
+
+&lt;h3 id=&quot;coherent-hierarchical-culling-chc&quot;&gt;Coherent Hierarchical Culling (CHC)&lt;/h3&gt;
+
+&lt;p&gt;Approach based on &lt;a href=&quot;https://www.cg.tuwien.ac.at/research/publications/2004/Bittner-2004-CHC/Bittner-2004-CHC-Paper.pdf&quot;&gt;&lt;em&gt;Coherent Hierarchical Culling: Hardware Occlusion
+Queries Made Useful&lt;/em&gt;&lt;/a&gt; by &lt;em&gt;Bittner&lt;/em&gt; et al.&lt;br /&gt;
+&lt;em&gt;CHC&lt;/em&gt; is a heuristic that tries to reduce waiting times from the &lt;em&gt;S&amp;amp;W&lt;/em&gt;
+approach. To do so, it uses scene hierarchies and temporal information.
+At first, only the first level of hidden nodes from the previous frame
+(of each branch of the scene hierarchy) will be queried. In the current
+implementation, this navigation is performed in a &lt;em&gt;depth-first search&lt;/em&gt;
+(&lt;em&gt;DFS&lt;/em&gt;) strategy. Visible leaf nodes in the previous frame are queried
+in the current frame and rendered without waiting for the queries
+results. At iteration the algorithm tries to see if there some query
+results available. If the invisible queried nodes turn out to be visible
+in this frame, then they are set visible and traversed (i.e. its child
+nodes will be queried again, and so on). On the other hand, if a leaf
+nodes that was visible in the previous frame turns out to be hidden, we
+will have missed because we will have already rendered it. However, we
+will implicitly pull up the invisibility if parent nodes were not
+visible as well, since at each new frame all nodes are initialized as
+hidden after being visited queried. This will fix our miss for the
+following frame.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;experiment-set-up&quot;&gt;Experiment set-up&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;A camera path has been recorded and reproduced using the following
+configurations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;No optimization&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Viewfrustum Culling (&lt;em&gt;VFC&lt;/em&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Stop and Wait (&lt;em&gt;S&amp;amp;W&lt;/em&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Stop and Wait + Viewfrustum Culling (&lt;em&gt;S&amp;amp;W + VFC&lt;/em&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Coherent Hierarchical Culling (&lt;em&gt;CHC&lt;/em&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Coherent Hierarchical Culling + Viewfrustum Culling (&lt;em&gt;CHC + VFC&lt;/em&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The model used has been &lt;em&gt;moai.ply&lt;/em&gt; in a 24 x 24 grid (key button 6).&lt;br /&gt;
+In the current system, this is a significantly saturated configuration in geometry, so real/interactive times are not achieved for some cases, as can be observed in Figure 1. However, this is not relevant, since the goal of this study is to compare the relative costs
+of the different techniques, which are effectively displayed.&lt;br /&gt;
+The camera path has been designed so that different scenarios appear
+(see Table 1).&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;style&gt;
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        border:2px solid #000000;
+    }
+
+    th{
+        border:2px solid #000000;
+    }
+
+    td{
+        border:1px solid #000000;
+    }
+&lt;/style&gt;
+
+&lt;table style=&quot;width:95%;&quot;&gt;
+&lt;caption&gt;Table 1: Path intervals description and approximate average frame times obtained with no optimization, &lt;em&gt;VFC&lt;/em&gt; and &lt;em&gt;CHC&lt;/em&gt; (most relevant techniques), with sample images belonging to each interval. Best measures for each scenario are highlighted in green.&lt;/caption&gt;
+&lt;colgroup&gt;
+&lt;col /&gt;
+&lt;col style=&quot;width: 30%&quot; /&gt;
+&lt;col style=&quot;width: 28%&quot; /&gt;
+&lt;col /&gt;
+&lt;col /&gt;
+&lt;col /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&quot;header&quot;&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;Frame&lt;/th&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;Description&lt;/th&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;Image&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;No OPT&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;VFC&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;CHC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;0-350&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera close to individual models.&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region1.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;160 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;40 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;350-550&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera frustum containing the whole scene at floor level&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region2.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;55 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;550-800&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera seeing the whole scene from above&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region3.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;370 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;800-950&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera navigating below the floor plane&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region4.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;120 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;5 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;950-1200&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera navigating inside the grid at floor level&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region5.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;90 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;30 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;1200-1600&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera looking at edges and corners of the grid (low amount of objects)&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region6.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;45 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;70 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;1600-2000&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;Camera seeing most of the scene from above&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;img src=&quot;/static/post-images/gpu-based-visibility/region7.png&quot; alt=&quot;image&quot; /&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;195 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center; background-color: #45f542&quot;&gt;170 ms&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;330 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure class=&quot;image&quot;&gt;
+    &lt;p align=&quot;center&quot;&gt;
+        &lt;img src=&quot;/static/projects/gpu_based_visibility_preview.png&quot; alt=&quot;Figure 1: Frame times to compute each frame in the test sequence used, evaluated with the proposed visibility techniques. Dashed lines are used to represent the same techniques as non-dashed ones but with viewfrustum culling (VFC).&quot; width=&quot;80%&quot; /&gt;
+    &lt;/p&gt;
+    &lt;figcaption&gt;Figure 1: Frame times to compute each frame in the test sequence used, evaluated with the proposed visibility techniques. Dashed lines are used to represent the same techniques as non-dashed ones but with viewfrustum culling (VFC).&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;discussion&quot;&gt;Discussion&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;As can be observed in Table 1 and Figure 1, the use of different visibility techniques can imply a huge change in performance.&lt;/p&gt;
+
+&lt;h3 id=&quot;viewfrustum-culling-vfc&quot;&gt;Viewfrustum Culling (&lt;em&gt;VFC&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;The first important difference to notice is the impact of &lt;em&gt;VFC&lt;/em&gt;. Compared to no optimizations, &lt;em&gt;VFC&lt;/em&gt; achieves much better performance in
+general, and almost identical performance in the worst cases. Therefore, it is safe to use &lt;em&gt;VFC&lt;/em&gt; in this configuration.&lt;br /&gt;
+Worst cases correspond to sequence intervals in which all elements of the grid are contained inside the camera frustum, hence &lt;em&gt;VFC&lt;/em&gt; is not able to reduce the bottleneck.&lt;br /&gt;
+Best cases are associated to frames that contain very few geometry in
+the camera frustum.&lt;/p&gt;
+
+&lt;h3 id=&quot;stop-and-wait-sw&quot;&gt;Stop and Wait (&lt;em&gt;S&amp;amp;W&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;The first occlusion query-based method introduced is &lt;em&gt;S&amp;amp;W&lt;/em&gt;. The technique alone performs worse than using no optimization techniques. As
+expected, this is because of the constant stalls in CPU and GPU during the occlusion querying phase.&lt;br /&gt;
+With &lt;em&gt;VFC&lt;/em&gt;, the technique seems to perform better, but still worse than only using &lt;em&gt;VFC&lt;/em&gt;.&lt;br /&gt;
+We could conclude that it is not worth using &lt;em&gt;S&amp;amp;W&lt;/em&gt; for almost any scenario.&lt;/p&gt;
+
+&lt;h3 id=&quot;coherent-hierarchical-culling-chc-1&quot;&gt;Coherent Hierarchical Culling (&lt;em&gt;CHC&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;Finally, lets analyze the &lt;em&gt;CHC&lt;/em&gt; effects on performance. In general, it reduces significantly the frame times with respect to the previous approaches. Looking at Figure 1, we can even see many frames in which the improvement is around one order of magnitude.&lt;br /&gt;
+However, it can be observed as well that this technique is not very stable in terms of frame rate. &lt;em&gt;VFC&lt;/em&gt; could seem unstable too, but in all cases it has the same or better performance than no optimization times. This is not the case of &lt;em&gt;CHC&lt;/em&gt;. There are some frames in which the performance is significantly worse than no optimization at all. This scenario appears in frames with no occlusions (or very few of them), because even if all leaf nodes end up being rendered, they will need to be queried as well. Therefore, since a leaf node is equivalent to a model, all the models will be queried, and the frame rendering phase will not end until all queries have finished.&lt;br /&gt;
+Also, notice that &lt;em&gt;VFC&lt;/em&gt; has almost no impact when using &lt;em&gt;CHC&lt;/em&gt;. This is because the hierarchical structure of the scene is performing this step implicitly. If an inner node (containing a set of models) does not pass the query test, then it is considered as occluded, but it could be also the case that it has not been projected to the screen, i.e. it is outside the camera frustum.&lt;br /&gt;
+Therefore, very few queries are avoided if we use &lt;em&gt;VFC&lt;/em&gt;, to the point that it there is no significant gain in using it (VFC test as expensive as launching the few queries avoided).&lt;br /&gt;
+&lt;br /&gt;
+Even though current techniques are more involved, the performance of the algorithms covered give a brief idea of the pros and cons of each one. I learned so much working on this, so I hope it has been useful to you too in some way.&lt;br /&gt;
+&lt;br /&gt;
+See you in the next one!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Jun 2021 13:50:30 +0200</pubDate>
+        <link>/rendering/2021/06/27/GPU-based-visibility-empirical-study/</link>
+        <guid isPermaLink="true">/rendering/2021/06/27/GPU-based-visibility-empirical-study/</guid>
+        
+        
+        <category>rendering</category>
+        
+      </item>
+    
+      <item>
+        <title>Webpage opening</title>
         <description>&lt;p&gt;Hello everyone!
 This is an inaguration post for my new webpage, so I am going to discuss how it is structured and which kind of content may appear in the future.&lt;/p&gt;
 
@@ -40,155 +266,6 @@ Thank you for your attention, and take care!&lt;/p&gt;
         <pubDate>Tue, 22 Jun 2021 14:30:00 +0200</pubDate>
         <link>/others/2021/06/22/webpage-opening/</link>
         <guid isPermaLink="true">/others/2021/06/22/webpage-opening/</guid>
-        
-        
-        <category>others</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 04 Jun 2016 15:50:39 +0200</pubDate>
-        <link>/jekyll/2016/06/04/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">/jekyll/2016/06/04/welcome-to-jekyll/</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Example content for posts</title>
-        <description>&lt;p&gt;&lt;small&gt;This demo page has been used from &lt;a href=&quot;http://jasonm23.github.io/markdown-css-themes/&quot; target=&quot;_blank&quot;&gt;http://jasonm23.github.io/markdown-css-themes/&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;
-
-&lt;h1&gt;A First Level Header&lt;/h1&gt;
-
-&lt;h2&gt;A Second Level Header&lt;/h2&gt;
-
-&lt;h3&gt;A Third Level Header&lt;/h3&gt;
-
-&lt;h4&gt;A Fourth Level Header&lt;/h4&gt;
-
-&lt;h5&gt;A Fifth Level Header&lt;/h5&gt;
-
-&lt;h6&gt;A Sixed Level Header&lt;/h6&gt;
-
-&lt;p&gt;Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.&lt;/p&gt;
-
-&lt;p&gt;The quick brown fox jumped over the lazy
-dog&amp;rsquo;s back.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3&gt;Header 3&lt;/h3&gt;
-
-&lt;blockquote&gt;&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
-
-&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-
-&lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
-
-&lt;p&gt;This is the first level of quoting.&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;This is nested blockquote.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;Back to the first level.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
-Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
-Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Candy.&lt;/li&gt;
-&lt;li&gt;Gum.&lt;/li&gt;
-&lt;li&gt;Booze.&lt;/li&gt;
-&lt;li&gt;Red&lt;/li&gt;
-&lt;li&gt;Green&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Blue&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With multiple paragraphs.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This is a list item with two paragraphs. Lorem ipsum dolor
-sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-mi posuere lectus.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-sit amet velit.*   Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This is a list item with two paragraphs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This is the second paragraph in the list item. You&amp;rsquo;re
-only required to indent the first line. Lorem ipsum dolor
-sit amet, consectetuer adipiscing elit.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Another item in the same list.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;A list item with a bit of &lt;code&gt;code&lt;/code&gt; inline.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;A list item with a blockquote:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;This is a blockquote
-inside a list item.&lt;/p&gt;&lt;/blockquote&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here is an example of a pre code block&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tell application &quot;Foo&quot;
-    beep
-end tell
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is an &lt;a href=&quot;#&quot;&gt;example link&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I start my morning with a cup of coffee and
-&lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;code-snippet&quot;&gt;Code snippet&lt;/h3&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_thread&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downloadWallpaper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Downloading Image'&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img_thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_alive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;st&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Image of the day downloaded.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Sat, 04 Jun 2016 00:00:00 +0200</pubDate>
-        <link>/others/2016/06/04/example-content/</link>
-        <guid isPermaLink="true">/others/2016/06/04/example-content/</guid>
         
         
         <category>others</category>
