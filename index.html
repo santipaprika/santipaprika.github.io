@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href=/static/img/icon3.png />
-        <title>Home - Santi Gonzalez</title>
+        <title>Projects - Santi Gonzalez</title>
         <meta name="author" content="Santi Gonzalez" />
-        <meta name="description" content="Home" />
-        <meta name="keywords" content="Home, Santi Gonzalez, " />
+        <meta name="description" content="Projects" />
+        <meta name="keywords" content="Projects, Santi Gonzalez, " />
 
         <meta content="" property="fb:app_id">
         <meta content="Santi Gonzalez" property="og:site_name">
         
-          <meta content="Home" property="og:title">
+          <meta content="Projects" property="og:title">
         
         
           <meta content="article" property="og:type">
@@ -36,7 +36,7 @@
         <meta name="twitter:site" content="@">
         <meta name="twitter:creator" content="@">
         
-          <meta name="twitter:title" content="Home">
+          <meta name="twitter:title" content="Projects">
         
         
           <meta name="twitter:url" content="/">
@@ -77,15 +77,15 @@
 
   <body class="home overflow-hidden">
     <div class="header-panel shadow-z-2">
-      <div class="container">
+      <div class="container" style="display: table;">
         <div class="row">
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="row-picture">
-              <img id="about" src="/static/img/icon3.png" height="75px" width="75px">
+          <div class="col-md-4 col-sm-5 col-xs-12" style="vertical-align: middle;">
+            <div class="row-picture" style="float: left;" style="vertical-align:middle;">
+              <img id="about" src="/static/img/icon3.png" height="75px" width="75px" style="margin-right: 10px; margin-top: 7px;">
             </div>
-            <div class="row-details">
-              <h4 class="list-group-item-heading">Santi Gonzalez</h4>
-              <p class="list-group-item-text">Graphics and game programmer</p>
+            <span class="details" style="color: white;">
+                <h4 class="list-group-item-heading">Santi Gonzalez</h4>
+                <p >Graphics and game programmer</p>
               <div class="social-icons">
 	
         <a class="icon" target="_blank" href="https://github.com/santipaprika"><i class="fa fa-github"></i></a>
@@ -108,7 +108,7 @@
 <meta property='og:description' content='Graphics and game programmer'/>
 <meta property='og:url' content='santipaprika.github.io'/>
 
-            </div>
+            </span>
             <div class="navbar-header pull-right">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -116,11 +116,12 @@
               </button>
             </div>
           </div>
-          <div class="col-md-9 col-sm-8 col-xs-12">
-          <div class="row">
-            <h2 class="blog-title-pro col-md-6 col-sm-12 col-xs-12 ">Home</h2>
+          <div class="col-md-8 col-sm-7 col-xs-12">
             
-            <div class="col-md-6 col-sm-12 col-xs-12 searchcontrol" id="js-search">
+          <div class="row" >
+            <h2 class="blog-title-pro col-md-8 col-sm-9 col-xs-12 ">Projects</h2>
+            
+            <div class="col-md-4 col-sm-3 col-xs-12 searchcontrol" id="js-search">
               <input class="form-control" type="text" id="js-search__input" placeholder="Search">
               <ul class="search__results" id="js-search__results"></ul>
             </div>
@@ -150,7 +151,7 @@
 	
     
 	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 current-menu-item "><a href="/" target="_self"><i class="fa fa-home"></i> Home</a></li>
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12 current-menu-item "><a href="/" target="_self"><i class="fa fa-desktop"></i> Projects</a></li>
 
 	
 	
@@ -170,7 +171,7 @@
 	
     
 	
-	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  "><a href="/projects" target="_self"><i class="fa fa-desktop"></i> Projects</a></li>
+	<li class="col-lg-12 col-md-12 col-sm-4 col-xs-12  "><a href="/posts" target="_self"><i class="fa fa-pen-alt"></i> Blog</a></li>
 
 	
 	
@@ -209,45 +210,703 @@
 
         </div>
         <div class="col-md-9 col-xs-12 full">
-          <div class="well">
-    <div class="list-group">
-        <h1>Welcome to my webpage!</h1>
-        <hr>
-        <h2>Posts</h2>
-        <br/>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">27 Jun 2021</div>
-          <h4 class="list-group-item-heading"><a href="/rendering/2021/06/27/GPU-based-visibility-empirical-study/">GPU-based visibility: empirical study</a></h4>
+          <div class="projects row">
+     
+	<div id="tag-filter" class="col-md-12 col-xs-12 tag-group">
+		<span class="label tag-filter tag-cloud all">Reset</span>
+        
+        
 
-          <p class="list-group-item-text">In this post I am going to study the performance of some GPU-based visibility techniques against traditional ones. Visibility techniques...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-      <div class="list-group-item">
-        <div class="row-action-primary">
-          <i class="fa fa-sticky-note"></i>
-        </div>
-        <div class="row-content">
-          <div class="least-content">22 Jun 2021</div>
-          <h4 class="list-group-item-heading"><a href="/others/2021/06/22/webpage-opening/">Webpage opening</a></h4>
+        
+        
 
-          <p class="list-group-item-text">Hello everyone! This is an inaguration post for my new webpage, so I am going to discuss how it is...</p>
-        </div>
-      </div>
-      <div class="list-group-separator"></div>
-      
-    </div>
-   
+        
+        
+            <span class="label tag-filter tag-cloud" data-tag="ar">AR</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="addon">Addon</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="analysis">Analysis</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="blender">Blender</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="c#">C#</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="c++">C++</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="django">Django</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="fiverr">Fiverr</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="game">Game</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="graphics">Graphics</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="html">HTML</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="javascript">Javascript</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="lua">Lua</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="modeling">Modeling</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="opengl">OpenGL</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="python">Python</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="qt">Qt</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="react">React</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="renderer">Renderer</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="rendering">Rendering</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="unity">Unity</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="unreal engine">Unreal Engine</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="vr">VR</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="vuforia">Vuforia</span>
+        
+            <span class="label tag-filter tag-cloud" data-tag="web">Web</span>
+        
+	</div>
 
-    <!-- Pagination links -->
+
     
-</div><!-- end #home -->
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","graphics","rendering","modeling"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/scalable-renderer">
+                    <div id="scalable_renderer.png" class="project-img bordered" style="background-image: url('/static/projects/scalable_renderer.png');" data-preview="background-image: url('/static/projects/scalable_renderer_preview.gif');"></div>
+                </a>
+                 <a href="/projects/scalable-renderer"> 
+                    <h3 class="project-headlines">Scalable Renderer</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="rendering">Rendering</span>
+                            
+                            <span class="label tags tag-filter" data-tag="modeling">Modeling</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/scalable-renderer" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">June 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","graphics","rendering","analysis"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/gpu-based-visibility">
+                    <div id="gpu_based_visibility.png" class="project-img bordered" style="background-image: url('/static/projects/gpu_based_visibility.png');" data-preview="background-image: url('/static/projects/gpu_based_visibility_preview.png');"></div>
+                </a>
+                 <a href="/projects/gpu-based-visibility"> 
+                    <h3 class="project-headlines">GPU-Based Visibility: Empirical Study</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="rendering">Rendering</span>
+                            
+                            <span class="label tags tag-filter" data-tag="analysis">Analysis</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/gpu-based-visibility" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">June 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","graphics","modeling"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/procedural-building-generator">
+                    <div id="procedural_building_generator.png" class="project-img bordered" style="background-image: url('/static/projects/procedural_building_generator.png');" data-preview="background-image: url('/static/projects/procedural_building_generator_preview.gif');"></div>
+                </a>
+                 <a href="/projects/procedural-building-generator"> 
+                    <h3 class="project-headlines">Procedural Building Generator</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="modeling">Modeling</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/procedural-building-generator" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">June 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","qt","graphics","modeling"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/marching-cubes-implementation">
+                    <div id="marching_cubes.png" class="project-img bordered" style="background-image: url('/static/projects/marching_cubes.png');" data-preview="background-image: url('/static/projects/marching_cubes_preview.gif');"></div>
+                </a>
+                 <a href="/projects/marching-cubes-implementation"> 
+                    <h3 class="project-headlines">Marching Cubes Implementation</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="qt">Qt</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="modeling">Modeling</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/marching-cubes-implementation" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">May 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["python","blender","graphics","modeling"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/catmull-clark-subdivision-implementation">
+                    <div id="catmull_clark.png" class="project-img bordered" style="background-image: url('/static/projects/catmull_clark.png');" data-preview="background-image: url('/static/projects/catmull_clark_preview.gif');"></div>
+                </a>
+                 <a href="/projects/catmull-clark-subdivision-implementation"> 
+                    <h3 class="project-headlines">Catmull-Clark Subdivision Implementation</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="python">Python</span>
+                            
+                            <span class="label tags tag-filter" data-tag="blender">Blender</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="modeling">Modeling</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/catmull-clark-subdivision-implementation" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Apr 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","graphics","renderer"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/real-time-realistic-renderer">
+                    <div id="rtr.png" class="project-img bordered" style="background-image: url('/static/projects/rtr.png');" data-preview="background-image: url('/static/projects/rtr_preview.gif');"></div>
+                </a>
+                 <a href="/projects/real-time-realistic-renderer"> 
+                    <h3 class="project-headlines">Real-time Realistic Renderer</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="renderer">Renderer</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/real-time-realistic-renderer" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Jun 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["addon","lua"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/session-time-wow-addon">
+                    <div id="session_time.png" class="project-img bordered" style="background-image: url('/static/projects/session_time.png');" data-preview="background-image: url('/static/projects/session_time_preview.gif');"></div>
+                </a>
+                 <a href="/projects/session-time-wow-addon"> 
+                    <h3 class="project-headlines">Session Time (WoW Addon)</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="addon">Addon</span>
+                            
+                            <span class="label tags tag-filter" data-tag="lua">Lua</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/session-time-wow-addon" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Nov 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","graphics","renderer"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/physically-based-renderer">
+                    <div id="pbr.png" class="project-img bordered" style="background-image: url('/static/projects/pbr.png');" data-preview="background-image: url('/static/projects/pbr_preview.gif');"></div>
+                </a>
+                 <a href="/projects/physically-based-renderer"> 
+                    <h3 class="project-headlines">Physically Based Renderer</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="renderer">Renderer</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/physically-based-renderer" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Dec 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["unreal engine","c++","game"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/simple-shooter">
+                    <div id="simple_shooter.png" class="project-img bordered" style="background-image: url('/static/projects/simple_shooter.png');" data-preview="background-image: url('/static/projects/simple_shooter_preview.gif');"></div>
+                </a>
+                 <a href="/projects/simple-shooter"> 
+                    <h3 class="project-headlines">Simple Shooter</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="unreal engine">Unreal Engine</span>
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/simple-shooter" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Feb 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","graphics","renderer"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/volumetric-renderer">
+                    <div id="volumetric_renderer.png" class="project-img bordered" style="background-image: url('/static/projects/volumetric_renderer.png');" data-preview="background-image: url('/static/projects/volumetric_renderer_preview.gif');"></div>
+                </a>
+                 <a href="/projects/volumetric-renderer"> 
+                    <h3 class="project-headlines">Volumetric Renderer</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="renderer">Renderer</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/volumetric-renderer" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Nov 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","graphics","renderer"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/cpu-ray-tracer">
+                    <div id="ray_tracer.png" class="project-img bordered" style="background-image: url('/static/projects/ray_tracer.png');" data-preview="background-image: url('/static/projects/ray_tracer.png');"></div>
+                </a>
+                 <a href="/projects/cpu-ray-tracer"> 
+                    <h3 class="project-headlines">CPU Ray Tracer</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="graphics">Graphics</span>
+                            
+                            <span class="label tags tag-filter" data-tag="renderer">Renderer</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/cpu-ray-tracer" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Jun 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["unity","c#","vr","game"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/escape-room">
+                    <div id="escape_room.png" class="project-img bordered" style="background-image: url('/static/projects/escape_room.png');" data-preview="background-image: url('/static/projects/escape_room_preview.gif');"></div>
+                </a>
+                 <a href="/projects/escape-room"> 
+                    <h3 class="project-headlines">Escape Room</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="unity">Unity</span>
+                            
+                            <span class="label tags tag-filter" data-tag="c#">C#</span>
+                            
+                            <span class="label tags tag-filter" data-tag="vr">VR</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/escape-room" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Nov 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["unity","c#","ar","vuforia","game"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/penguin-pet">
+                    <div id="penguin_pet.png" class="project-img bordered" style="background-image: url('/static/projects/penguin_pet.png');" data-preview="background-image: url('/static/projects/penguin_pet_preview.gif');"></div>
+                </a>
+                 <a href="/projects/penguin-pet"> 
+                    <h3 class="project-headlines">Penguin Pet</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="unity">Unity</span>
+                            
+                            <span class="label tags tag-filter" data-tag="c#">C#</span>
+                            
+                            <span class="label tags tag-filter" data-tag="ar">AR</span>
+                            
+                            <span class="label tags tag-filter" data-tag="vuforia">Vuforia</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/penguin-pet" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Jan 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","game"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/pick-and-run">
+                    <div id="pick_and_run.png" class="project-img bordered" style="background-image: url('/static/projects/pick_and_run.png');" data-preview="background-image: url('/static/projects/pick_and_run_preview.gif');"></div>
+                </a>
+                 <a href="/projects/pick-and-run"> 
+                    <h3 class="project-headlines">Pick & Run</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/pick-and-run" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Jun 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["c++","opengl","game"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/priest-simulator">
+                    <div id="priest_simulator.png" class="project-img bordered" style="background-image: url('/static/projects/priest_simulator.png');" data-preview="background-image: url('/static/projects/priest_simulator_preview.gif');"></div>
+                </a>
+                 <a href="/projects/priest-simulator"> 
+                    <h3 class="project-headlines">Priest Simulator</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="c++">C++</span>
+                            
+                            <span class="label tags tag-filter" data-tag="opengl">OpenGL</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/priest-simulator" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Apr 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["unity","c#","game","fiverr"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/endless-runner">
+                    <div id="endless_runner.png" class="project-img bordered" style="background-image: url('/static/projects/endless_runner.png');" data-preview="background-image: url('/static/projects/endless_runner_preview.gif');"></div>
+                </a>
+                 <a href="/projects/endless-runner"> 
+                    <h3 class="project-headlines">Endless Runner</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="unity">Unity</span>
+                            
+                            <span class="label tags tag-filter" data-tag="c#">C#</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            <span class="label tags tag-filter" data-tag="fiverr">Fiverr</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/endless-runner" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">May 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["unity","c#","game","fiverr"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/save-the-zebra">
+                    <div id="save_the_zebra.png" class="project-img bordered" style="background-image: url('/static/projects/save_the_zebra.png');" data-preview="background-image: url('/static/projects/save_the_zebra_preview.gif');"></div>
+                </a>
+                 <a href="/projects/save-the-zebra"> 
+                    <h3 class="project-headlines">Save the Zebra</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="unity">Unity</span>
+                            
+                            <span class="label tags tag-filter" data-tag="c#">C#</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            <span class="label tags tag-filter" data-tag="fiverr">Fiverr</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/save-the-zebra" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Jul 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='["python","web","game","html","django","javascript","react"]'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/projects/color-war">
+                    <div id="color_war.png" class="project-img bordered" style="background-image: url('/static/projects/color_war.png');" data-preview="background-image: url('/static/projects/color_war_preview.gif');"></div>
+                </a>
+                 <a href="/projects/color-war"> 
+                    <h3 class="project-headlines">Color War</h3>
+                     </a> 
+                    <div class="project-content">
+                        <div class="tag-holder">
+                             
+                            
+                            <span class="label tags tag-filter" data-tag="python">Python</span>
+                            
+                            <span class="label tags tag-filter" data-tag="web">Web</span>
+                            
+                            <span class="label tags tag-filter" data-tag="game">Game</span>
+                            
+                            <span class="label tags tag-filter" data-tag="html">HTML</span>
+                            
+                            <span class="label tags tag-filter" data-tag="django">Django</span>
+                            
+                            <span class="label tags tag-filter" data-tag="javascript">Javascript</span>
+                            
+                            <span class="label tags tag-filter" data-tag="react">React</span>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="project-footer"> 
+                         
+                        <a href="/projects/color-war" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                        
+                        <span class="project-timeline">Aug 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!-- end #home -->
 
           <div class="row">
             <div class="col-md-12 col-xs-12 footer">

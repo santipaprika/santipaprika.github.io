@@ -5,8 +5,8 @@
     <description>Graphics and game programmer</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Jul 2021 13:11:52 +0200</pubDate>
-    <lastBuildDate>Thu, 01 Jul 2021 13:11:52 +0200</lastBuildDate>
+    <pubDate>Sat, 10 Jul 2021 12:49:10 +0200</pubDate>
+    <lastBuildDate>Sat, 10 Jul 2021 12:49:10 +0200</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -227,8 +227,8 @@ Even though current techniques are more involved, the performance of the algorit
 See you in the next one!&lt;/p&gt;
 </description>
         <pubDate>Sun, 27 Jun 2021 13:50:30 +0200</pubDate>
-        <link>/rendering/2021/06/27/GPU-based-visibility-empirical-study/</link>
-        <guid isPermaLink="true">/rendering/2021/06/27/GPU-based-visibility-empirical-study/</guid>
+        <link>/posts/2021-06-22-gpu-based-visibility-empirical-study</link>
+        <guid isPermaLink="true">/posts/2021-06-22-gpu-based-visibility-empirical-study</guid>
         
         
         <category>rendering</category>
@@ -264,8 +264,8 @@ Also, I will use some posts as notice page for every new project I may add, intr
 Thank you for your attention, and take care!&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Jun 2021 14:30:00 +0200</pubDate>
-        <link>/others/2021/06/22/webpage-opening/</link>
-        <guid isPermaLink="true">/others/2021/06/22/webpage-opening/</guid>
+        <link>/posts/2021-06-22-webpage-opening</link>
+        <guid isPermaLink="true">/posts/2021-06-22-webpage-opening</guid>
         
         
         <category>others</category>
